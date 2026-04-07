@@ -19,7 +19,6 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 # Importar módulos
 from api.coingecko import CoinGeckoClient
-from modules import market, onchain, news, fundamentals
 from modules.market import render_market_dashboard
 from modules.onchain import render_onchain_dashboard
 from modules.news import render_news_dashboard
