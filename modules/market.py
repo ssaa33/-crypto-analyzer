@@ -113,8 +113,15 @@ class MarketData:
             "days_analyzed": len(prices)
         }
     
-    def format_market_cap(self, value: float) -> str:
+    def format_market_cap(self, value) -> str:
         """Formatea market cap de forma legible"""
+        if value is None or value == 0:
+            return "$0"
+        try:
+            value = float(value)
+        except (TypeError, ValueError):
+            return "$0"
+        
         if value >= 1e12:
             return f"${value/1e12:.2f}T"
         elif value >= 1e9:
@@ -126,8 +133,15 @@ class MarketData:
         else:
             return f"${value:.2f}"
     
-    def format_percentage(self, value: float) -> str:
+    def format_percentage(self, value) -> str:
         """Formatea porcentaje con color"""
+        if value is None:
+            return "0.00%"
+        try:
+            value = float(value)
+        except (TypeError, ValueError):
+            return "0.00%"
+        
         if value > 0:
             return f"+{value:.2f}%"
         elif value < 0:
