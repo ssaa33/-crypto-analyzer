@@ -12,6 +12,7 @@ import streamlit as st
 from streamlit_autorefresh import st_autorefresh
 import sys
 import os
+import pandas as pd
 
 # Añadir path para imports
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
@@ -19,6 +20,10 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 # Importar módulos
 from api.coingecko import CoinGeckoClient
 from modules import market, onchain, news, fundamentals
+from modules.market import render_market_dashboard
+from modules.onchain import render_onchain_dashboard
+from modules.news import render_news_dashboard
+from modules.fundamentals import render_fundamentals_dashboard
 
 # ====================
 # CONFIGURACIÓN
@@ -117,16 +122,16 @@ tab1, tab2, tab3, tab4 = st.tabs([
 ])
 
 with tab1:
-    market.render_market_dashboard(api_client)
+    render_market_dashboard(api_client)
 
 with tab2:
-    onchain.render_onchain_dashboard(api_client)
+    render_onchain_dashboard(api_client)
 
 with tab3:
-    news.render_news_dashboard(api_client)
+    render_news_dashboard(api_client)
 
 with tab4:
-    fundamentals.render_fundamentals_dashboard(api_client)
+    render_fundamentals_dashboard(api_client)
 
 # ====================
 # FOOTER
