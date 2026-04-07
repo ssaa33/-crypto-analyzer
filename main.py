@@ -52,7 +52,7 @@ st.set_page_config(
 @st.cache_resource
 def get_api_client():
     """Inicializa el cliente de API"""
-    return CoinGeckoClient(rate_limit=10)
+    return CoinGeckoClient(rate_limit=50)
 
 api_client = get_api_client()
 
@@ -97,7 +97,7 @@ with st.sidebar:
     # Estado de la API
     try:
         test = api_client.get_price(["bitcoin"])
-        if test:
+        if test and len(test) > 0:
             st.success("✅ API Conectada")
         else:
             st.warning("⚠️ API no responde")
