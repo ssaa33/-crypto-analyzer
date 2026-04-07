@@ -1,5 +1,4 @@
-"""
-Módulo de Datos de Mercado
+# Market Data Module - Fixed version
 Recopila y procesa datos de mercado de criptomonedas
 """
 
